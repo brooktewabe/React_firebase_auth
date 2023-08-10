@@ -11,7 +11,7 @@ const Counter = () => {
         setCounter((prevCounter) => prevCounter - 1);
     };
 
-    return (
+    return ( 
         <>
             <button data-testid="increment" onClick={incrementCounter}>+</button>
             <p data-testid="counter">{counter}</p>
