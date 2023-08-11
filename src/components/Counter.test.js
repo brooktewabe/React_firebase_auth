@@ -15,4 +15,4 @@ fireEvent.click(incrementBtn);
 
 //assert the expected result 
 expect(counter).toHaveTextContent("1");
-});
+}); 
