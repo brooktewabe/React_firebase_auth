@@ -1,18 +1,15 @@
 pipeline {
   agent any
+
+  tools { nodejs "nodejs" }
+
   stages {
-    stage('hello') {
+    stage('Test npm') {
       steps {
-        sh 'npm install'
-        sh 'echo "Hello World"'
+        sh """
+          npm --version
+        """
       }
     }
-    stage('config') {
-      steps {
-        sh 'npm build'
-        sh 'echo "Hello World"'
-      }
-    }
-      
   }
 }
