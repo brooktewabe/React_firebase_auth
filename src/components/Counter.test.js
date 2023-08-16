@@ -14,5 +14,5 @@ const incrementBtn = screen.getByTestId("increment");
 fireEvent.click(incrementBtn);
 
 //assert the expected result 
-expect(counter).toHaveTextContent("1");
+expect(counter).toHaveTextContent("1"); 
 }); 
