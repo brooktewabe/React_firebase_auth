@@ -1,12 +1,14 @@
 pipeline {
   agent any
-
   stages {
-    stage('Test npm') {
+    stage('build') {
       steps {
-        sh """
-          npm --version
-        """
+        sh 'npm install'
+      }
+    }
+    stage('run') {
+      steps {
+        sh 'npm start'
       }
     }
   }
