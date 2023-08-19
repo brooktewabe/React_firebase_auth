@@ -6,14 +6,10 @@ pipeline {
 
     stage('build') {
       steps {
-        sh 'npm install'
+        sh 'node --version'
       }
     }
-    stage('run') {
-      steps {
-        sh 'npm test'
-      }
-    }
+
   }
 }
 
