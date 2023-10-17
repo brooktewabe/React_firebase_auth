@@ -1,4 +1,4 @@
-# This is a react app with firebase authentication enabled,it also includes CI/CD using Github Actions
+# This is a react app with firebase authentication enabled,it also includes CI/CD using Github Actions and Jenkins
 
 
 
