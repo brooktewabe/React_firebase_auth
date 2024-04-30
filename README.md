@@ -1,11 +1,3 @@
-# This is a react app with firebase authentication enabled,it also includes simple CI using Github Actions and Jenkins
-
-
-
-
-
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
