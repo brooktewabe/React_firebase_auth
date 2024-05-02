@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/authContext';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const { currentUser } = useAuth();
-  const [displayName, setDisplayName] = useState(currentUser.displayName || '');
-  const [email, setEmail] = useState(currentUser.email || '');
+  const [displayName, setDisplayName] = useState(currentUser?.displayName || '');
+  const [email, setEmail] = useState(currentUser?.email || '');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate('/login');
+    }
+  }, [currentUser, navigate]);
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();

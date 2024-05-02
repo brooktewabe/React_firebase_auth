@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   getFirestore,
@@ -10,6 +10,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { useNavigate } from "react-router-dom";
 import ChatMessage from  "./ChatMessage";
 import { auth, app } from "../firebase/firebase";
 
@@ -17,12 +18,19 @@ const firestore = getFirestore(app);
 
 function App() {
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
   const dummy = useRef();
   const messagesRef = collection(firestore, "messages");
   const q = query(messagesRef, orderBy("createdAt"), limit(25));
 
   const [messages] = useCollectionData(q, { idField: "id" });
   const [formValue, setFormValue] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
@@ -34,6 +42,7 @@ function App() {
       photoURL,
     });
     setFormValue("");
+    //  scroll down to show the latest message
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
